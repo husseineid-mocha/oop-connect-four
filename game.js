@@ -5,10 +5,11 @@ class Game {
         this.player1name = player1name
         this.player2name = player2name
         this.currentPlayer = 1
-        this.columns = Array(7).fill(new Column())
-            // for (let index = 0; index < 7; index++) {
-            //     this.columns.push(new Column())
-            // }
+        this.columns = []
+            // Array(7).fill(new Column())
+        for (let index = 0; index < 7; index++) {
+            this.columns.push(new Column())
+        }
 
     }
     getName() {
