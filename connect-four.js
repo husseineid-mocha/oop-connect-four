@@ -20,6 +20,24 @@ const updateUI = function() {
             clickTargets.classList.remove("black")
         }
     }
+
+    for (let i = 0; i <= 5; i++) {
+      for (let j = 0; j <= 6; j++) {
+        const square = document.getElementById(`square-${i}-${j}`)
+        square.innerHTML = ''
+
+        const tokenNum = game.getTokenAt(i, j)
+        if (tokenNum === 1) {
+          let token = document.createElement('div')
+          token.classList.add('token', 'black')
+          square.appendChild(token)
+        } else if (tokenNum === 2) {
+          let token = document.createElement('div')
+          token.classList.add('token', 'red')
+          square.appendChild(token)
+        }
+      }
+    }
 }
 
 window.addEventListener("DOMContentLoaded", event => {
