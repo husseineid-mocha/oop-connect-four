@@ -21,22 +21,34 @@ const updateUI = function() {
         }
     }
 
-    for (let i = 0; i <= 5; i++) {
-      for (let j = 0; j <= 6; j++) {
-        const square = document.getElementById(`square-${i}-${j}`)
-        square.innerHTML = ''
+    for (let columnIndex = 0; columnIndex <= 6; columnIndex++) {
+        const isColumnFull = game.isColumnFull(columnIndex)
+        const columnId = `column-${columnIndex}`
+        const column = document.getElementById(columnId)
 
-        const tokenNum = game.getTokenAt(i, j)
-        if (tokenNum === 1) {
-          let token = document.createElement('div')
-          token.classList.add('token', 'black')
-          square.appendChild(token)
-        } else if (tokenNum === 2) {
-          let token = document.createElement('div')
-          token.classList.add('token', 'red')
-          square.appendChild(token)
+        if (isColumnFull) {
+            column.classList.add('full')
+        } else {
+            column.classList.remove('full')
         }
-      }
+    }
+
+    for (let rowIndex = 0; rowIndex <= 5; rowIndex++) {
+        for (let columnIndex = 0; columnIndex <= 6; columnIndex++) {
+            const square = document.getElementById(`square-${rowIndex}-${columnIndex}`)
+            square.innerHTML = ''
+
+            const tokenNum = game.getTokenAt(rowIndex, columnIndex)
+            if (tokenNum === 1) {
+                let token = document.createElement('div')
+                token.classList.add('token', 'black')
+                square.appendChild(token)
+            } else if (tokenNum === 2) {
+                let token = document.createElement('div')
+                token.classList.add('token', 'red')
+                square.appendChild(token)
+            }
+        }
     }
 }
 

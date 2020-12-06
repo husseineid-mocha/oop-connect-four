@@ -29,6 +29,9 @@ class Game {
         const column = this.columns[columnIndex]
         return column.getTokenAt(rowIndex)
     }
+    isColumnFull(columnIndex) {
+        return this.columns[columnIndex].add(this.currentPlayer)
+    }
 }
 
 export default Game
